@@ -13,6 +13,8 @@
 		C717BB701FA9A7CA0081150F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C717BB6F1FA9A7CA0081150F /* Assets.xcassets */; };
 		C717BB731FA9A7CA0081150F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C717BB711FA9A7CA0081150F /* LaunchScreen.storyboard */; };
 		C78671451FA9ABED002A74E1 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */; };
+		C78671471FA9AD85002A74E1 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671461FA9AD85002A74E1 /* ProgressCell.swift */; };
+		C78671491FA9AEC9002A74E1 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671481FA9AEC9002A74E1 /* DataItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C717BB721FA9A7CA0081150F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C717BB741FA9A7CA0081150F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		C78671461FA9AD85002A74E1 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
+		C78671481FA9AEC9002A74E1 /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				C717BB681FA9A7CA0081150F /* AppDelegate.swift */,
 				C717BB6A1FA9A7CA0081150F /* DataProcessingViewController.swift */,
 				C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */,
+				C78671461FA9AD85002A74E1 /* ProgressCell.swift */,
+				C78671481FA9AEC9002A74E1 /* DataItem.swift */,
 				C717BB6C1FA9A7CA0081150F /* Main.storyboard */,
 				C717BB6F1FA9A7CA0081150F /* Assets.xcassets */,
 				C717BB711FA9A7CA0081150F /* LaunchScreen.storyboard */,
@@ -139,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78671491FA9AEC9002A74E1 /* DataItem.swift in Sources */,
 				C717BB6B1FA9A7CA0081150F /* DataProcessingViewController.swift in Sources */,
 				C717BB691FA9A7CA0081150F /* AppDelegate.swift in Sources */,
+				C78671471FA9AD85002A74E1 /* ProgressCell.swift in Sources */,
 				C78671451FA9ABED002A74E1 /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
