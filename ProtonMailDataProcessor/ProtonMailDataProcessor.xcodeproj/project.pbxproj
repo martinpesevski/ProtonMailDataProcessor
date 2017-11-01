@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		C717BB691FA9A7CA0081150F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717BB681FA9A7CA0081150F /* AppDelegate.swift */; };
-		C717BB6B1FA9A7CA0081150F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717BB6A1FA9A7CA0081150F /* ViewController.swift */; };
+		C717BB6B1FA9A7CA0081150F /* DataProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717BB6A1FA9A7CA0081150F /* DataProcessingViewController.swift */; };
 		C717BB6E1FA9A7CA0081150F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C717BB6C1FA9A7CA0081150F /* Main.storyboard */; };
 		C717BB701FA9A7CA0081150F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C717BB6F1FA9A7CA0081150F /* Assets.xcassets */; };
 		C717BB731FA9A7CA0081150F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C717BB711FA9A7CA0081150F /* LaunchScreen.storyboard */; };
+		C78671451FA9ABED002A74E1 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C717BB651FA9A7CA0081150F /* ProtonMailDataProcessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtonMailDataProcessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C717BB681FA9A7CA0081150F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C717BB6A1FA9A7CA0081150F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C717BB6A1FA9A7CA0081150F /* DataProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessingViewController.swift; sourceTree = "<group>"; };
 		C717BB6D1FA9A7CA0081150F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C717BB6F1FA9A7CA0081150F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C717BB721FA9A7CA0081150F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C717BB741FA9A7CA0081150F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				C717BB681FA9A7CA0081150F /* AppDelegate.swift */,
-				C717BB6A1FA9A7CA0081150F /* ViewController.swift */,
+				C717BB6A1FA9A7CA0081150F /* DataProcessingViewController.swift */,
+				C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */,
 				C717BB6C1FA9A7CA0081150F /* Main.storyboard */,
 				C717BB6F1FA9A7CA0081150F /* Assets.xcassets */,
 				C717BB711FA9A7CA0081150F /* LaunchScreen.storyboard */,
@@ -136,8 +139,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C717BB6B1FA9A7CA0081150F /* ViewController.swift in Sources */,
+				C717BB6B1FA9A7CA0081150F /* DataProcessingViewController.swift in Sources */,
 				C717BB691FA9A7CA0081150F /* AppDelegate.swift in Sources */,
+				C78671451FA9ABED002A74E1 /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
