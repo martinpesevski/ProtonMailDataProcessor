@@ -17,7 +17,9 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
     var dataCompletedItemsArray : [DataItem] = []
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        self.title = "Data Processor"
     }
     
     // MARK: tableview methods
