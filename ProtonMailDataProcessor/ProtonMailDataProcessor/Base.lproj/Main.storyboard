@@ -27,6 +27,9 @@
                                     <segment title="Pending"/>
                                     <segment title="Completed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="b6e-aM-NON"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o9g-kp-bOi">
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
@@ -51,6 +54,30 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="progressView" destination="Wdr-JQ-bkc" id="YZ5-Ee-u6W"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="progressCompletedCellIdentifier" id="mw9-bK-WqR" customClass="ProgressCompletedCell" customModule="ProtonMailDataProcessor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mw9-bK-WqR" id="QnD-1K-q1U">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yab-N5-1Bp">
+                                                    <rect key="frame" x="28" y="11" width="319" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yab-N5-1Bp" secondAttribute="trailing" constant="20" id="VNs-6p-mFa"/>
+                                                <constraint firstItem="yab-N5-1Bp" firstAttribute="centerY" secondItem="QnD-1K-q1U" secondAttribute="centerY" id="pue-d2-NQp"/>
+                                                <constraint firstItem="yab-N5-1Bp" firstAttribute="leading" secondItem="QnD-1K-q1U" secondAttribute="leadingMargin" constant="20" id="uXa-eR-wyc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="completedCellLabel" destination="yab-N5-1Bp" id="zSi-K7-t0c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
