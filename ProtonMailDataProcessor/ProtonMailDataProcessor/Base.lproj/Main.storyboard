@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -158,7 +159,7 @@
                                 <state key="normal" title="Click to add file"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CFB-bO-yjl">
-                                <rect key="frame" x="0.0" y="281" width="375" height="386"/>
+                                <rect key="frame" x="0.0" y="281" width="375" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="keywordCellIdentifier" rowHeight="62" id="q29-RO-Lu9" customClass="KeywordCell" customModule="ProtonMailDataProcessor" customModuleProvider="target">
@@ -203,22 +204,46 @@
                                     <outlet property="delegate" destination="PHC-al-99x" id="GHl-Ak-mbX"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpp-9G-CyN">
+                                <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6hi-2c-EKe"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="PHC-al-99x" eventType="touchUpInside" id="Ul6-vR-nId"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sya-gk-aK7">
+                                <rect key="frame" x="187" y="617" width="187.5" height="50"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="onSave:" destination="PHC-al-99x" eventType="touchUpInside" id="jrQ-eF-0Vx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hSz-kZ-DRT" firstAttribute="centerY" secondItem="1z9-TK-RbC" secondAttribute="centerY" id="6qk-Mx-3h9"/>
                             <constraint firstItem="hSz-kZ-DRT" firstAttribute="trailing" secondItem="kZ5-3O-pXh" secondAttribute="trailing" id="AAu-9g-Ucc"/>
                             <constraint firstItem="Waa-ZL-HnL" firstAttribute="trailing" secondItem="CFB-bO-yjl" secondAttribute="trailing" id="ABR-YL-43e"/>
-                            <constraint firstItem="Waa-ZL-HnL" firstAttribute="bottom" secondItem="CFB-bO-yjl" secondAttribute="bottom" id="EOc-9x-knI"/>
+                            <constraint firstItem="Sya-gk-aK7" firstAttribute="width" secondItem="tpp-9G-CyN" secondAttribute="width" id="CJg-bJ-Ooy"/>
+                            <constraint firstItem="Sya-gk-aK7" firstAttribute="bottom" secondItem="Waa-ZL-HnL" secondAttribute="bottom" id="CcG-qX-rjh"/>
+                            <constraint firstItem="Sya-gk-aK7" firstAttribute="height" secondItem="tpp-9G-CyN" secondAttribute="height" id="G6u-yQ-5tc"/>
+                            <constraint firstItem="tpp-9G-CyN" firstAttribute="top" secondItem="CFB-bO-yjl" secondAttribute="bottom" id="GDe-dK-1hp"/>
                             <constraint firstItem="Waa-ZL-HnL" firstAttribute="trailing" secondItem="kZ5-3O-pXh" secondAttribute="trailing" constant="20" id="H5K-U8-9XO"/>
+                            <constraint firstItem="tpp-9G-CyN" firstAttribute="bottom" secondItem="Waa-ZL-HnL" secondAttribute="bottom" id="OnX-uS-tul"/>
                             <constraint firstItem="1z9-TK-RbC" firstAttribute="leading" secondItem="Z1N-ob-3sr" secondAttribute="leading" id="RKS-Qj-qbd"/>
                             <constraint firstItem="Pfh-gj-YBc" firstAttribute="trailing" secondItem="hSz-kZ-DRT" secondAttribute="trailing" id="Uet-cV-IR8"/>
                             <constraint firstItem="Z1N-ob-3sr" firstAttribute="top" secondItem="Waa-ZL-HnL" secondAttribute="top" constant="90" id="VAG-Bq-cux"/>
                             <constraint firstItem="1z9-TK-RbC" firstAttribute="top" secondItem="Z1N-ob-3sr" secondAttribute="bottom" constant="20" id="XBK-lj-1Nf"/>
                             <constraint firstItem="Pfh-gj-YBc" firstAttribute="centerY" secondItem="DyN-ba-00B" secondAttribute="centerY" id="ZpX-Ny-akr"/>
                             <constraint firstItem="CFB-bO-yjl" firstAttribute="leading" secondItem="Waa-ZL-HnL" secondAttribute="leading" id="eyI-Gq-d7Y"/>
+                            <constraint firstItem="Waa-ZL-HnL" firstAttribute="trailing" secondItem="Sya-gk-aK7" secondAttribute="trailing" id="gou-dp-a8I"/>
                             <constraint firstItem="Z1N-ob-3sr" firstAttribute="leading" secondItem="Waa-ZL-HnL" secondAttribute="leading" constant="16" id="hI0-kd-rvF"/>
                             <constraint firstItem="kZ5-3O-pXh" firstAttribute="centerY" secondItem="Z1N-ob-3sr" secondAttribute="centerY" id="iuI-hG-HaK"/>
+                            <constraint firstItem="Waa-ZL-HnL" firstAttribute="centerX" secondItem="tpp-9G-CyN" secondAttribute="trailing" id="l5o-G6-smP"/>
+                            <constraint firstItem="tpp-9G-CyN" firstAttribute="leading" secondItem="Waa-ZL-HnL" secondAttribute="leading" id="p83-Fp-Cwc"/>
                             <constraint firstItem="DyN-ba-00B" firstAttribute="leading" secondItem="1z9-TK-RbC" secondAttribute="leading" id="pgX-sf-b2z"/>
                             <constraint firstItem="kZ5-3O-pXh" firstAttribute="width" secondItem="hSz-kZ-DRT" secondAttribute="width" id="r4a-I8-oS2"/>
                             <constraint firstItem="Pfh-gj-YBc" firstAttribute="leading" secondItem="hSz-kZ-DRT" secondAttribute="leading" id="rrJ-hr-tw9"/>

@@ -13,13 +13,26 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var pendingCompletedSegmentedControl: UISegmentedControl!
     @IBOutlet var dataTableView: UITableView!
     
-    var dataLoadingItemsArray = [DataItem.init(), DataItem.init(), DataItem.init(), DataItem.init(), DataItem.init()]
+    var dataLoadingItemsArray : [DataItem] = []
     var dataCompletedItemsArray : [DataItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Data Processor"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let recentlyAddedDataObject = UserDefaults.standard.object(forKey: "savedDataItem") as? NSData {
+            let recentlyAddedDataItem =
+                NSKeyedUnarchiver.unarchiveObject(with: recentlyAddedDataObject as Data) as! DataItem
+            dataLoadingItemsArray.append(recentlyAddedDataItem)
+            recentlyAddedDataItem.startProcessing()
+            dataTableView.reloadData()
+            UserDefaults.standard.removeObject(forKey: "savedDataItem")
+        }
     }
     
     // MARK: tableview methods
@@ -52,7 +65,11 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        if pendingCompletedSegmentedControl.selectedSegmentIndex == 1 {
+            return true
+        }
+        
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

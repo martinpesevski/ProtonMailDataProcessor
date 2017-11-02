@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateTaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CreateTaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
     @IBOutlet var nameField: UITextField!
     @IBOutlet var descriptionField: UITextField!
     @IBOutlet var keywordsTableView: UITableView!
@@ -20,7 +20,9 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         self.title = "Create Task"
-
+        
+        self.nameField.delegate = self
+        self.descriptionField.delegate = self
     }
     
     // MARK: tableview methods
@@ -50,6 +52,16 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    // MARK: textfield delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: alerts
+    
     func showAlert(text: String, completion: @escaping (String) -> ()) {
         let alertController = UIAlertController.init(title: text, message: "", preferredStyle: .alert)
         
@@ -69,4 +81,33 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func showAlert(text: String, description: String?) {
+        let alertController = UIAlertController.init(title: text, message: description, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: IBActions
+    
+    @IBAction func onCancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func onSave(_ sender: Any) {
+        if nameField.text!.isEmpty {
+            self.showAlert(text: "Enter a name for the task", description: nil)
+            return
+        }
+        
+        let dataItem = DataItem.init(title: nameField.text!, description: descriptionField.text, keywordsArray: keywordsArray)
+        
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: dataItem), forKey: "savedDataItem")
+        navigationController?.popViewController(animated: true)
+    }
+    
 }

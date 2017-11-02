@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeywordItem: NSObject {
+class KeywordItem: NSObject, NSCoding {
     var keyword = ""
     var isPlaceholderForAdding = false
     
@@ -17,5 +17,15 @@ class KeywordItem: NSObject {
         
         self.keyword = keyword
         isPlaceholderForAdding = isPlaceholder
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.keyword = aDecoder.decodeObject(forKey: "keyword") as! String
+        
+        super.init()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(keyword, forKey: "keyword")
     }
 }
