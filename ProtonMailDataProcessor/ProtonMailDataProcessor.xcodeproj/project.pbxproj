@@ -18,9 +18,13 @@
 		C78671451FA9ABED002A74E1 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671441FA9ABED002A74E1 /* CreateTaskViewController.swift */; };
 		C78671471FA9AD85002A74E1 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671461FA9AD85002A74E1 /* ProgressCell.swift */; };
 		C78671491FA9AEC9002A74E1 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78671481FA9AEC9002A74E1 /* DataItem.swift */; };
+		D5B9CB47BCCA409FB60BEEBF /* Pods_ProtonMailDataProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A139A68B5FDBF11A28F9B274 /* Pods_ProtonMailDataProcessor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52C9E211428FD2B4F5A7FC30 /* Pods-ProtonMailDataProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtonMailDataProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtonMailDataProcessor/Pods-ProtonMailDataProcessor.release.xcconfig"; sourceTree = "<group>"; };
+		6FDCB19C08003BF73287FD11 /* Pods-ProtonMailDataProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtonMailDataProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProtonMailDataProcessor/Pods-ProtonMailDataProcessor.debug.xcconfig"; sourceTree = "<group>"; };
+		A139A68B5FDBF11A28F9B274 /* Pods_ProtonMailDataProcessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtonMailDataProcessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C717BB651FA9A7CA0081150F /* ProtonMailDataProcessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtonMailDataProcessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C717BB681FA9A7CA0081150F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C717BB6A1FA9A7CA0081150F /* DataProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessingViewController.swift; sourceTree = "<group>"; };
@@ -41,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B9CB47BCCA409FB60BEEBF /* Pods_ProtonMailDataProcessor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0456EE87C40794BE9667F37C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A139A68B5FDBF11A28F9B274 /* Pods_ProtonMailDataProcessor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AE2F59B8B406248906DACB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6FDCB19C08003BF73287FD11 /* Pods-ProtonMailDataProcessor.debug.xcconfig */,
+				52C9E211428FD2B4F5A7FC30 /* Pods-ProtonMailDataProcessor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C717BB5C1FA9A7CA0081150F = {
 			isa = PBXGroup;
 			children = (
 				C717BB671FA9A7CA0081150F /* ProtonMailDataProcessor */,
 				C717BB661FA9A7CA0081150F /* Products */,
+				1AE2F59B8B406248906DACB9 /* Pods */,
+				0456EE87C40794BE9667F37C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C717BB771FA9A7CA0081150F /* Build configuration list for PBXNativeTarget "ProtonMailDataProcessor" */;
 			buildPhases = (
+				0C89FF4E18D449A9C286A2DA /* [CP] Check Pods Manifest.lock */,
 				C717BB611FA9A7CA0081150F /* Sources */,
 				C717BB621FA9A7CA0081150F /* Frameworks */,
 				C717BB631FA9A7CA0081150F /* Resources */,
+				AFAD0AC69E176DB32A3CFF7A /* [CP] Embed Pods Frameworks */,
+				F01A13FE80CECA7234D9DA92 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +175,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C89FF4E18D449A9C286A2DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProtonMailDataProcessor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFAD0AC69E176DB32A3CFF7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ProtonMailDataProcessor/Pods-ProtonMailDataProcessor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProtonMailDataProcessor/Pods-ProtonMailDataProcessor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F01A13FE80CECA7234D9DA92 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProtonMailDataProcessor/Pods-ProtonMailDataProcessor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C717BB611FA9A7CA0081150F /* Sources */ = {
@@ -296,6 +377,7 @@
 		};
 		C717BB781FA9A7CA0081150F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FDCB19C08003BF73287FD11 /* Pods-ProtonMailDataProcessor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +393,7 @@
 		};
 		C717BB791FA9A7CA0081150F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52C9E211428FD2B4F5A7FC30 /* Pods-ProtonMailDataProcessor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

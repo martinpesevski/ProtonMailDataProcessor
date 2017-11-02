@@ -15,7 +15,7 @@ protocol DataItemDelegate : class {
 
 class DataItem: NSObject, NSCoding {
     var timer : Timer = Timer()
-    let totalTime : Double = Double(arc4random_uniform(10)) + 1 //to avoid zero
+    let totalTime : Double = Double(arc4random_uniform(100)) + 1 //to avoid zero
     var timerProgress = 0.0
     let timerInterval = 0.01
     var completed = false
@@ -30,7 +30,7 @@ class DataItem: NSObject, NSCoding {
     
     init(title: String, description: String?, keywordsArray: [KeywordItem]?) {
         super.init()
-        
+                
         self.title = title
         self.dataDescription = description
         self.keywordsArray = keywordsArray

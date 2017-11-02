@@ -16,6 +16,8 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
     var dataLoadingItemsArray : [DataItem] = []
     var dataCompletedItemsArray : [DataItem] = []
     
+    var editDataItem : DataItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,11 +67,7 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if pendingCompletedSegmentedControl.selectedSegmentIndex == 1 {
-            return true
-        }
-        
-        return false
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -80,6 +78,31 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
             dataCompletedItemsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
             dataItem.startProcessing()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let swipeAction = UITableViewRowAction.init(style: .normal, title: "postpone") { (action, index) in
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if pendingCompletedSegmentedControl.selectedSegmentIndex == 0 {
+            editDataItem = dataLoadingItemsArray[indexPath.row]
+        } else {
+            editDataItem = dataCompletedItemsArray[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "addEditTaskSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is CreateTaskViewController {
+            let destinationController = segue.destination as! CreateTaskViewController
+            if let editDataItem = editDataItem {
+                destinationController.dataItem = editDataItem
+            }
         }
     }
     

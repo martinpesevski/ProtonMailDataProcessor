@@ -88,7 +88,7 @@
                                 <rect key="frame" x="325" y="83" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="PHC-al-99x" kind="show" id="Tlc-eq-KvH"/>
+                                    <segue destination="PHC-al-99x" kind="show" identifier="addEditTaskSegue" id="Tlc-eq-KvH"/>
                                 </connections>
                             </button>
                         </subviews>

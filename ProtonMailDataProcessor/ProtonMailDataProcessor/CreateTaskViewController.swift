@@ -14,13 +14,24 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet var keywordsTableView: UITableView!
     @IBOutlet var addFileButton: UIButton!
     
-    var keywordsArray = [KeywordItem.init(keyword: "Add Keyword", isPlaceholder: true)]
+    var keywordsArray: [KeywordItem]?
+    var dataItem: DataItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Create Task"
         
+        self.keywordsArray = []
+        
+        if let dataItem = self.dataItem {
+            nameField.text = dataItem.title
+            descriptionField.text = dataItem.dataDescription
+            
+            keywordsArray = dataItem.keywordsArray
+        }
+        
+        self.keywordsArray?.append(KeywordItem.init(keyword: "Add Keyword", isPlaceholder: true))
         self.nameField.delegate = self
         self.descriptionField.delegate = self
     }
@@ -30,22 +41,35 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "keywordCellIdentifier", for: indexPath) as! KeywordCell
         
-        cell.setupWithKeyword(keywordItem: keywordsArray[indexPath.row])
-        
+        if let unwrappedKeywordsArray = self.keywordsArray {
+            cell.setupWithKeyword(keywordItem: unwrappedKeywordsArray[indexPath.row])
+        }
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let keywordsArray = keywordsArray else {
+            return 1
+        }
+        
         return keywordsArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let keywordsArray = self.keywordsArray  else {
+            return
+        }
+        
         let keyWordItem = keywordsArray[indexPath.row]
         
         if keyWordItem.isPlaceholderForAdding {
             showAlert(text: "Add Keyword", completion: { (keyword) in
                 let newKeywordItem = KeywordItem.init(keyword: keyword, isPlaceholder: false)
-                self.keywordsArray.insert(newKeywordItem, at: self.keywordsArray.count - 1)
+                
+                var mutableKeywords = keywordsArray
+                mutableKeywords.insert(newKeywordItem, at: keywordsArray.count - 1)
+                self.keywordsArray = mutableKeywords
                 
                 self.keywordsTableView.reloadData()
             })
@@ -105,6 +129,11 @@ class CreateTaskViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         let dataItem = DataItem.init(title: nameField.text!, description: descriptionField.text, keywordsArray: keywordsArray)
+        if let isPlaceholder = dataItem.keywordsArray?.last?.isPlaceholderForAdding {
+            if isPlaceholder {
+                dataItem.keywordsArray!.remove(at: (dataItem.keywordsArray!.count - 1))
+            }
+        }
         
         UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: dataItem), forKey: "savedDataItem")
         navigationController?.popViewController(animated: true)
