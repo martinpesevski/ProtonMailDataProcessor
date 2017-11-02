@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 class DataProcessingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProgressCellDelegate {
 
@@ -30,8 +31,10 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
         if let recentlyAddedDataObject = UserDefaults.standard.object(forKey: "savedDataItem") as? NSData {
             let recentlyAddedDataItem =
                 NSKeyedUnarchiver.unarchiveObject(with: recentlyAddedDataObject as Data) as! DataItem
-            dataLoadingItemsArray.append(recentlyAddedDataItem)
-            recentlyAddedDataItem.startProcessing()
+            if !recentlyAddedDataItem.completed {
+                recentlyAddedDataItem.startProcessing()
+                dataLoadingItemsArray.append(recentlyAddedDataItem)
+            }
             dataTableView.reloadData()
             UserDefaults.standard.removeObject(forKey: "savedDataItem")
         }
@@ -46,8 +49,26 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCell(withIdentifier: "progressCellIdentifier", for: indexPath) as! ProgressCell
 
             dataItem = dataLoadingItemsArray[indexPath.row]
-            cell.delegate = self
+            cell.progressCellDelegate = self
             cell.setupWithDataItem(dataItem: dataItem)
+            
+            //configure left buttons
+            cell.leftButtons = [MGSwipeButton.init(title: "Pause", backgroundColor: .green, callback: { (swipeCell) -> Bool in
+                dataItem.pauseTimer()
+                return true
+            })]
+            cell.leftSwipeSettings.transition = .drag
+            cell.leftExpansion.fillOnTrigger = false
+            cell.leftExpansion.threshold = 1
+            
+            cell.rightButtons = [MGSwipeButton(title: "Continue", icon: nil, backgroundColor: .red, callback: { (swipeCell) -> Bool in
+                dataItem.resumeTimer()
+                return true
+            })]
+            cell.rightSwipeSettings.transition = .drag
+            cell.rightExpansion.fillOnTrigger = false
+            cell.rightExpansion.threshold = 1
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "progressCompletedCellIdentifier", for: indexPath) as! ProgressCompletedCell
@@ -78,12 +99,6 @@ class DataProcessingViewController: UIViewController, UITableViewDelegate, UITab
             dataCompletedItemsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
             dataItem.startProcessing()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let swipeAction = UITableViewRowAction.init(style: .normal, title: "postpone") { (action, index) in
-            
         }
     }
     

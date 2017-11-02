@@ -7,23 +7,24 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 protocol ProgressCellDelegate : class {
     func onProgressFinished(dataItem: DataItem)
 }
 
-class ProgressCell: UITableViewCell, DataItemDelegate {
+public class ProgressCell: MGSwipeTableCell, DataItemDelegate {
     @IBOutlet var progressView: UIProgressView!
     
-    weak var delegate : ProgressCellDelegate!
+    weak var progressCellDelegate : ProgressCellDelegate!
     weak var dataItem : DataItem!
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
 
     }
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         self.dataItem = nil
     }
@@ -45,6 +46,6 @@ class ProgressCell: UITableViewCell, DataItemDelegate {
     }
     
     func onProgressFinished() {
-        delegate.onProgressFinished(dataItem: dataItem)
+        progressCellDelegate.onProgressFinished(dataItem: dataItem)
     }
 }

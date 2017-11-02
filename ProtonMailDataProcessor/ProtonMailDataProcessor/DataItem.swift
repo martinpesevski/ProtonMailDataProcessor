@@ -17,6 +17,7 @@ class DataItem: NSObject, NSCoding {
     var timer : Timer = Timer()
     let totalTime : Double = Double(arc4random_uniform(100)) + 1 //to avoid zero
     var timerProgress = 0.0
+    var timesRun = 0
     let timerInterval = 0.01
     var completed = false
     var keywordsArray : [KeywordItem]?
@@ -58,10 +59,22 @@ class DataItem: NSObject, NSCoding {
         }
         
         timerProgress = 0.0
-        var timesRun : Int = 0
+        timesRun = 0
+        startTimer()
+    }
+    
+    func pauseTimer() {
+        self.timer.invalidate()
+    }
+    
+    func resumeTimer() {
+        self.startTimer()
+    }
+    
+    func startTimer() {
         self.timer = Timer.init(timeInterval: timerInterval, repeats: true, block: { (blockTimer) in
-            timesRun = timesRun + 1
-            self.timerProgress = Double(timesRun) * self.timerInterval
+            self.timesRun = self.timesRun + 1
+            self.timerProgress = Double(self.timesRun) * self.timerInterval
             guard let delegate = self.delegate else {
                 return
             }
