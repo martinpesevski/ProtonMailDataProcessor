@@ -16,4 +16,16 @@ class KeywordCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setupWithKeyword(keywordItem: KeywordItem) {
+        keywordLabel.text = keywordItem.keyword
+        
+        if keywordItem.isPlaceholderForAdding {
+            imageView?.image = UIImage.init(named: "add_icon")?.withRenderingMode(.alwaysTemplate)
+            imageView?.tintColor = UIColor.green
+        } else {
+            imageView?.image = UIImage.init(named: "remove_icon")?.withRenderingMode(.alwaysTemplate)
+            imageView?.tintColor = UIColor.red
+        }
+    }
 }
